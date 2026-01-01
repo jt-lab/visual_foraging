@@ -1,0 +1,12 @@
+= Visual Foraging Manual
+:doctype: book
+:toc:
+:toclevels: 3
+:sectnums:
+
+include::attributes.adoc[]
+include::chapters/00-preface.adoc[]
+include::chapters/01-introduction.adoc[]
+include::chapters/02-installation.adoc[]
+include::chapters/03-quickstart.adoc[]
+include::chapters/99-appendix.adoc[]

@@ -1,0 +1,3 @@
+:plugin-name: Visual Foraging
+:plugin-version: 0.1.0
+:opensesame-version: 4.0+

@@ -1,0 +1,8 @@
+extends: default
+page:
+  size: A4
+  margin: [20mm, 20mm, 25mm, 20mm]
+base:
+  font-size: 11
+heading:
+  font-size: 14

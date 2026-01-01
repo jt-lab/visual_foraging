@@ -1,0 +1,52 @@
+name: Documentation
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  pages: write
+  id-token: write
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Asciidoctor
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ruby-full
+          gem install asciidoctor asciidoctor-pdf
+
+      - name: Build HTML
+        run: |
+          cd docs
+          asciidoctor book.adoc -o index.html
+
+      - name: Build PDF
+        run: |
+          cd docs
+          asciidoctor-pdf book.adoc
+
+      - name: Upload PDF
+        uses: actions/upload-artifact@v4
+        with:
+          name: manual-pdf
+          path: docs/book.pdf
+
+      - name: Upload Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+    steps:
+      - uses: actions/deploy-pages@v4
