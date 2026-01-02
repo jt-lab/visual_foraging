@@ -16,11 +16,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install Asciidoctor
+      - name: Install Ruby and Asciidoctor
         run: |
-          sudo apt-get update
-          sudo apt-get install -y ruby-full
-          gem install asciidoctor asciidoctor-pdf
+        sudo apt-get update
+        sudo apt-get install -y ruby-full
+        gem install --user-install   asciidoctor asciidoctor-pdf
+    echo "$HOME/.gem/ruby/$(ruby -e 'puts RUBY_VERSION[/^\d+\.\d+/]')/bin" >> $GITHUB_PATH
+
 
       - name: Build HTML
         run: |
