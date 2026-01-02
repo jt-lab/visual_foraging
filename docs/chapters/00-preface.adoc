@@ -1,3 +1,3 @@
 == Preface
 
-This manual documents the {plugin-name} OpenSesame plugin.
+Just a Test. This manual documents the {plugin-name} OpenSesame plugin.
